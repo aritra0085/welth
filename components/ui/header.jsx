@@ -1,6 +1,8 @@
 import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "./button";
+import { LayoutDashboard } from "lucide-react";
 
 const Header = () => {
   return (
@@ -14,16 +16,25 @@ const Header = () => {
       className="h-12 w-auto object-contain"
       />
       </Link>
-    
-
-
-
+      <div>
+        <SignedIn>
+          <Link href={"/dashboard"}>
+            <Button variant="outline">
+              <LayoutDashboard size={18}/>
+              <span>Dashboard</span>
+            </Button>
+          </Link>
+        </SignedIn>
+      
       <SignedOut>
-        <SignInButton />
+        <SignInButton forceRedirectUrl="/dashboard">
+        <Button variant="outline">Login</Button>
+        </SignInButton>
       </SignedOut>
       <SignedIn>
         <UserButton />
       </SignedIn>
+      </div>
       </nav>
     </div>
   );
