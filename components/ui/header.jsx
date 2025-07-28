@@ -1,24 +1,30 @@
 import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
+import Image from "next/image";
+import Link from "next/link";
 
 const Header = () => {
   return (
-    <div>
-      <SignedOut>
-        <SignInButton>
-          <button className="bg-[#6c47ff] text-white rounded-full font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 cursor-pointer">
-            Sign In
-          </button>
-        </SignInButton>
-        <SignUpButton>
-          <button className="bg-[#6c47ff] text-white rounded-full font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 cursor-pointer">
-            Sign Up
-          </button>
-        </SignUpButton>
-      </SignedOut>
+    <div className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b"> 
+    <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
+      <Link href="/">
+      <Image src={"/logo.png"}
+      alt="welth logo"
+      height={60}
+      width={100}
+      className="h-12 w-auto object-contain"
+      />
+      </Link>
+    
 
+
+
+      <SignedOut>
+        <SignInButton />
+      </SignedOut>
       <SignedIn>
         <UserButton />
       </SignedIn>
+      </nav>
     </div>
   );
 };
